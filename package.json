@@ -1,0 +1,13 @@
+{
+  "name": "expose",
+  "version": "1.0.0",
+  "description": "Expose localhost to local network",
+  "main": "index.js",
+  "author": "whomenope <whomenope@outlook.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "ip": "^1.1.5",
+    "node-fetch": "^2.1.1"
+  }
+}
