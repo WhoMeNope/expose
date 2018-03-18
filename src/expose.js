@@ -43,7 +43,7 @@ if(require.main === module) {
 	logEnabled = true;
 
 	const portLocal = (process.argv.length >= 2 && parseInt(process.argv[2])) || 3000;
-	const portPublic = 3000;
+	const portPublic = (process.argv.length >= 3 && parseInt(process.argv[3])) || 3000;
 
 	start(portLocal, portPublic);
 }
