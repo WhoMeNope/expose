@@ -1,4 +1,4 @@
-# Expose
+# portp
 
 Expose localhost port on local network.
 
@@ -7,7 +7,7 @@ Expose localhost port on local network.
 ## Usage
 
 ```bash
-expose {localhost port} {local network port}
+portp {localhost port} {local network port}
 ```
 
 ```javascript
