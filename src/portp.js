@@ -2,9 +2,7 @@ const http = require("http");
 const fetch = require("node-fetch");
 const ip = require("ip");
 
-let logEnabled = false;
-
-function start(portLocal = 3000, portPublic = 3000)
+function start(portLocal = 3000, portPublic = 3000, logEnabled = false)
 {
 	http
 		.createServer((request, response) => {
@@ -35,17 +33,6 @@ function start(portLocal = 3000, portPublic = 3000)
 				console.log(`Exposing \thttp://localhost:${portLocal}\nOn \t\thttp://${ip.address()}:${portPublic}`);
 			}
 		});
-}
-
-if(require.main === module) {
-	//called directly
-
-	logEnabled = true;
-
-	const portLocal = (process.argv.length >= 2 && parseInt(process.argv[2])) || 3000;
-	const portPublic = (process.argv.length >= 3 && parseInt(process.argv[3])) || 3000;
-
-	start(portLocal, portPublic);
 }
 
 module.exports = start;

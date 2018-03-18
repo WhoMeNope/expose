@@ -1,14 +1,17 @@
 {
   "name": "portp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Expose localhost on local network",
   "main": "src/portp.js",
   "author": "whomenope <whomenope@outlook.com>",
   "license": "MIT",
   "private": false,
-	"scripts": {
+  "bin": {
+    "portp": "bin/portp.js"
+  },
+  "scripts": {
     "test": "jest --forceExit"
-  } ,
+  },
   "dependencies": {
     "ip": "^1.1.5",
     "node-fetch": "^2.1.1"
