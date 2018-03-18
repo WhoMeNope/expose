@@ -1,4 +1,4 @@
-const expose = require('../src/expose.js');
+const portp = require('../src/portp.js');
 const ip = require("ip");
 const fetch = require("node-fetch");
 const http = require('http');
@@ -18,7 +18,7 @@ it('exposes localhost port to local network' ,() => {
 			throw error;
 	});
 
-	expose();
+	portp();
 
 	return expect(
 		fetch("http://" + ip.address() + ":" + port)

@@ -11,10 +11,10 @@ portp {localhost port} {local network port}
 ```
 
 ```javascript
-const expose = require("expose");
+const portp = require("portp");
 
 const localPort = 3000;
 const publicPort = 3000;
-expose(localPort, publicPort)
+portp(localPort, publicPort)
 ```
 

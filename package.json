@@ -1,8 +1,8 @@
 {
-  "name": "expose",
+  "name": "portp",
   "version": "1.0.0",
   "description": "Expose localhost on local network",
-  "main": "src/expose.js",
+  "main": "src/portp.js",
   "author": "whomenope <whomenope@outlook.com>",
   "license": "MIT",
   "private": false,
