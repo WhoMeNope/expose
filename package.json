@@ -1,7 +1,7 @@
 {
   "name": "expose",
   "version": "1.0.0",
-  "description": "Expose localhost to local network",
+  "description": "Expose localhost on local network",
   "main": "index.js",
   "author": "whomenope <whomenope@outlook.com>",
   "license": "MIT",

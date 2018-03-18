@@ -2,35 +2,51 @@ const http = require("http");
 const fetch = require("node-fetch");
 const ip = require("ip");
 
-const portLocal = (process.argv.length >= 2 && parseInt(process.argv[2])) || 3000;
-const portPublic = 3000;
+let logEnabled = false;
 
-http
-	.createServer((request, response) => {
-		console.log(request.url);
-		fetch("http://localhost:" + portLocal + request.url,
-			{
-				method: request.method,
-				redirect: 'follow',
-				headers: request.headers,
-				body: request.body
-			})
-			.then((handled) => {
-				response.statusCode = handled.status;
-				return handled.text();
-			})
-			.then((data) => {
-				response.end(data);
-			})
-			.catch((error) => {
-				console.error(error);
-				response.statusCode = 500;
-				response.end("Error Code: 500");
-			});
-	})
-	.listen(portPublic, ip.address(), 511, (err) => {
-		if(err) {
-			console.err(`Could not expose http://localhost:${portLocal} on http://${ip.address()}:${portPublic}`, err);
-		}
-		console.log(`Exposing \thttp://localhost:${portLocal}\nOn \t\thttp://${ip.address()}:${portPublic}`);
-	});
+function start(portLocal, portPublic)
+{
+	http
+		.createServer((request, response) => {
+			console.log(request.url);
+			fetch("http://localhost:" + portLocal + request.url,
+				{
+					method: request.method,
+					redirect: 'follow',
+					headers: request.headers,
+					body: request.body
+				})
+				.then((handled) => {
+					response.statusCode = handled.status;
+					return handled.text();
+				})
+				.then((data) => {
+					response.end(data);
+				})
+				.catch((error) => {
+					response.statusCode = 500;
+					response.end(error);
+				});
+		})
+		.listen(portPublic, ip.address(), 511, (err) => {
+			if(logEnabled) {
+				if(err) {
+					console.err(`Could not expose http://localhost:${portLocal} on http://${ip.address()}:${portPublic}`, err);
+				}
+				console.log(`Exposing \thttp://localhost:${portLocal}\nOn \t\thttp://${ip.address()}:${portPublic}`);
+			}
+		});
+}
+
+if(require.main === module) {
+	//called directly
+
+	logEnabled = true;
+
+	const portLocal = (process.argv.length >= 2 && parseInt(process.argv[2])) || 3000;
+	const portPublic = 3000;
+
+	start(portLocal, portPublic);
+}
+
+export default start;
