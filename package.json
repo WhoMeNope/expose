@@ -2,12 +2,18 @@
   "name": "expose",
   "version": "1.0.0",
   "description": "Expose localhost on local network",
-  "main": "index.js",
+  "main": "src/expose.js",
   "author": "whomenope <whomenope@outlook.com>",
   "license": "MIT",
   "private": false,
+	"scripts": {
+    "test": "jest --forceExit"
+  } ,
   "dependencies": {
     "ip": "^1.1.5",
     "node-fetch": "^2.1.1"
+  },
+  "devDependencies": {
+    "jest": "^22.4.2"
   }
 }

@@ -4,11 +4,10 @@ const ip = require("ip");
 
 let logEnabled = false;
 
-function start(portLocal, portPublic)
+function start(portLocal = 3000, portPublic = 3000)
 {
 	http
 		.createServer((request, response) => {
-			console.log(request.url);
 			fetch("http://localhost:" + portLocal + request.url,
 				{
 					method: request.method,
@@ -49,4 +48,4 @@ if(require.main === module) {
 	start(portLocal, portPublic);
 }
 
-export default start;
+module.exports = start;
