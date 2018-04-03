@@ -1,5 +1,11 @@
 # portp
 
+Deprecated!
+
+Unsafe to use, allows outside traffic to access local services (which usually have minimal or no security of their own)!
+
+---
+
 Expose localhost port on local network.
 
 (exposes http only)
